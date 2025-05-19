@@ -21,6 +21,13 @@ export default function Layout() {
                         title: "Inicio",
                     }}
                 />
+                <Drawer.Screen
+                    name="vehicle"
+                    options={{
+                        drawerLabel: () => null, // Oculta do menu
+                        drawerItemStyle: { display: 'none' }, // Alternativa
+                    }}
+                />
             </Drawer>
         </GestureHandlerRootView>
     );

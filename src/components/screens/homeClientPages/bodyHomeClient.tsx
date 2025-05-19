@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import { Image, Text, View } from 'react-native';
 import { GlobalButton } from '../../atoms/globalButton';
 import { GlobalInputs } from '../../atoms/globalInputs';
@@ -39,7 +40,7 @@ export default function BodyHomeClient() {
                             width='100px' />
 
                         <GlobalButton
-                            action={() => console.log("Pressionou")}
+                            action={() => router.push('/Drawer/vehicle')}
                             fontBold='semibold' backgroundColor='bg-gray-300' fontSize='11pt' marginBottom='0'
                             marginTop='20px' paddindg='10' height='0' text='Veículos'
                             width='100px' />
