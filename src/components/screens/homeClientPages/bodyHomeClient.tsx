@@ -34,7 +34,7 @@ export default function BodyHomeClient() {
                     <View className='w-full  max-sm:flex-wrap max-sm:justify-start flex-row  justify-start  gap-[20px]'>
 
                         <GlobalButton
-                            action={() => console.log("Pressionou")}
+                            action={() => router.push('/Drawer/history')}
                             fontBold='semibold' backgroundColor='bg-gray-300' fontSize='11pt' marginBottom='0'
                             marginTop='20px' paddindg='10' height='0' text='Histórico'
                             width='100px' />

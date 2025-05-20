@@ -28,6 +28,7 @@ export default function VehiclePage() {
                         Marca: <Text className="font-bold">Volkswagen</Text>
                     </Text>
                 </View>
+                {/* right Content(Image, Plate and Button) */}
                 <View className="h-[300px] justify-center gap-[10px] items-center w-1/2 flex-col">
                     <Image
                         style={{
@@ -39,6 +40,9 @@ export default function VehiclePage() {
                     <Text className="text-base sm:text-lg md:text-xl">
                         Placa: <Text className="font-bold">2b3t9990</Text>
                     </Text>
+                    <Pressable className='w-[150px] rounded-[9px] bg-blue-600 py-[1px] hover:translate-y-[-2px] duration-[600ms]'>
+                        <Text className='text-[15pt] font-bold text-center'>Configurar</Text>
+                    </Pressable>
                 </View>
             </View>
             <Text className="text-[15pt] font-bold my-[20px] text-center">Outros Veículos</Text>
