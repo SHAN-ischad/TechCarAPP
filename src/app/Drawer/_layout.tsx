@@ -6,7 +6,7 @@ import '../../style/global.css';
 
 export default function Layout() {
     return (
-        <GestureHandlerRootView style={{ flex: 1 }}>
+        <GestureHandlerRootView >
             <Drawer screenOptions={{ headerShown: false }
             }>
                 <Drawer.Screen
@@ -23,6 +23,14 @@ export default function Layout() {
                 />
                 <Drawer.Screen
                     name="vehicle"
+                    options={{
+                        drawerLabel: () => null, // Oculta do menu
+                        drawerItemStyle: { display: 'none' }, // Alternativa
+                    }}
+                />
+
+                <Drawer.Screen
+                    name="history"
                     options={{
                         drawerLabel: () => null, // Oculta do menu
                         drawerItemStyle: { display: 'none' }, // Alternativa

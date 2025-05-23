@@ -7,7 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 export default function HistoryClient() {
     const router = useRouter();
     return (
-        <ScrollView className="min-w-max min-h-full justify-center">
+        <ScrollView className="min-w-max min-h-full">
             {/* Header */}
             <Pressable
                 onPress={() => router.push('/Drawer/homeClient')}

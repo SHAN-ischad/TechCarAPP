@@ -1,12 +1,12 @@
 import GlobalHeader from '@/src/components/organisms/header';
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { BodyHome } from '../../components/screens/homePages/bodyHome';
 import { BottomHome } from '../../components/screens/homePages/bottomHome';
 
 export default function Home() {
     return (
-        <View className='flex-1 bg-white overflow-x-hidden' >
+        <ScrollView className='flex-1 bg-white ' >
             {/* Header */}
             <View>
                 <GlobalHeader />
@@ -15,6 +15,6 @@ export default function Home() {
             <BodyHome />
 
             <BottomHome />
-        </View>
+        </ScrollView>
     );
 }
