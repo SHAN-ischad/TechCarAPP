@@ -36,6 +36,14 @@ export default function Layout() {
                         drawerItemStyle: { display: 'none' }, // Alternativa
                     }}
                 />
+
+                <Drawer.Screen
+                    name="OwnerPages/employees"
+                    options={{
+                        drawerLabel: () => null, // Oculta do menu
+                        drawerItemStyle: { display: 'none' }, // Alternativa
+                    }}
+                />
             </Drawer>
         </GestureHandlerRootView>
     );

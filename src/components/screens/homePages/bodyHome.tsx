@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import { Image, Text, View } from 'react-native';
 import { GlobalButton } from '../../atoms/globalButton';
 import { GlobalInputs } from '../../atoms/globalInputs';
@@ -33,19 +34,19 @@ export function BodyHome() {
                     <View className='w-full  max-sm:flex-wrap max-sm:justify-start flex-row  justify-start  gap-[20px]'>
 
                         <GlobalButton
-                            action={() => console.log("Pressionou")}
+                            action={() => router.push('/Drawer/history')}
                             fontBold='semibold' backgroundColor='bg-gray-300' fontSize='11pt' marginBottom='0'
                             marginTop='20px' paddindg='10' height='0' text='Pagamentos'
                             width='100px' />
 
                         <GlobalButton
-                            action={() => console.log("Pressionou")}
+                            action={() => router.push('/Drawer/history')}
                             fontBold='semibold' backgroundColor='bg-gray-300' fontSize='11pt' marginBottom='0'
                             marginTop='20px' paddindg='10' height='0' text='Financeiro'
                             width='100px' />
 
                         <GlobalButton
-                            action={() => console.log("Pressionou")}
+                            action={() => router.push('/Drawer/OwnerPages/employees')}
                             fontBold='semibold' backgroundColor='bg-gray-300' fontSize='11pt' marginBottom='0'
                             marginTop='20px' paddindg='10' height='0' text='Funcionários' width='100px' />
 

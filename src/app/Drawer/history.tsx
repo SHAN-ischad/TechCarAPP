@@ -1,21 +1,16 @@
+import GlobalReturnButton from '@/src/components/atoms/globalReturnButton';
 import { AreaPressableClient } from '@/src/components/organisms/AreaPressableClient';
 import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default function HistoryClient() {
-    const router = useRouter();
+    // const router = useRouter();
+
     return (
         <ScrollView className="min-w-max min-h-full">
             {/* Header */}
-            <Pressable
-                onPress={() => router.push('/Drawer/homeClient')}
-                className="w-[90px] flex-row mt-[30px] gap-[10px] group/back items-center py-[10px] bg-gray-400  rounded-[10px]"
-            >
-                <Ionicons name="arrow-back" className="group-hover/back:animate-move-side" size={20} />
-                <Text className="text-[13pt] font-medium text-center ">Voltar</Text>
-            </Pressable>
+            <GlobalReturnButton route='homeClient' />
 
             <View className="h-max w-full items-center flex-col gap-[20px]">
                 <View className="w-full flex-row gap-[20px] max-[800px]:gap-[5px] max-[800px]:justify-start justify-center">
