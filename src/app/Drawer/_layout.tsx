@@ -44,6 +44,14 @@ export default function Layout() {
                         drawerItemStyle: { display: 'none' }, // Alternativa
                     }}
                 />
+
+                <Drawer.Screen
+                    name="OwnerPages/payments"
+                    options={{
+                        drawerLabel: () => null, // Oculta do menu
+                        drawerItemStyle: { display: 'none' }, // Alternativa
+                    }}
+                />
             </Drawer>
         </GestureHandlerRootView>
     );
