@@ -13,70 +13,68 @@ export default function VehiclePage() {
                 <Text className='text-[13pt] font-medium text-center '>Voltar</Text>
             </Pressable>
 
-            <Text className='text-[20pt] font-bold text-center'>Veículo Principal</Text>
-            {/* areaVehicle */}
-            <View className="w-full max-w-[500px] mx-auto mt-4 h-[300px] flex-row bg-gray-200 border-b-[2px] rounded-md">
-                {/* left Area(name car, year fabrication and mark) */}
-                <View className="w-1/2 gap-[50px] justify-center h-full">
-                    <Text className="text-base sm:text-lg md:text-xl">
-                        Nome do Veículo: <Text className="font-bold">Fox</Text>
-                    </Text>
-                    <Text className="text-base sm:text-lg md:text-xl">
-                        Ano de fabricação: <Text className="font-bold">20/08/2010</Text>
-                    </Text>
-                    <Text className="text-base sm:text-lg md:text-xl">
-                        Marca: <Text className="font-bold">Volkswagen</Text>
-                    </Text>
+
+
+            {/* Vehycle Area*/}
+            <View className='w-full flex-row max-[900px]:flex-col mt-[2%]    '>
+
+                {/* Vehicle Info */}
+                <View className='w-1/2 bg-slate-300/20 rounded-[10px] flex-row   '>
+
+                    {/* Left Area(Name, Status, Date Fabrication and manufacturer)*/}
+                    <View className='gap-[20px] flex-col w-1/2 '>
+
+                        <Text className='text-[16pt] '>Veículo: <Text>Bravo</Text> <Ionicons name='car' size={25} className='top-[6px]' /></Text>
+
+                        <Text className='text-[16pt] '>Data de Fabriação: <Text>22/10/2001</Text> <Ionicons name='calendar-clear-outline' size={25} className='top-[6px]' /></Text>
+
+                        <Text className='text-[16pt] '>Empresa: <Text>Fiat</Text> <Ionicons name='business' size={25} className='top-[6px]' /></Text>
+
+                        <Text className='text-[16pt] '>Status: <Text>Em Serviço</Text> <Ionicons name='flag-outline' size={25} className='top-[6px]' /></Text>
+                        {/* Buttons */}
+                        <View className='w-full '>
+                            <Pressable className='w-1/2 flex-row group/car  '>
+                                <Ionicons name='construct' size={29} />
+                                <View className='w-fit h-fit'>
+                                    <Text className='absolute text-[15pt] left-[-100px] opacity-0 group-hover/car:opacity-100 group-hover/car:left-0 transition-all duration-[900ms] bg-slate-300/50 rounded-full p-[5px] pl-[10px]'>Configurações</Text>
+                                </View>
+                            </Pressable>
+                        </View>
+                    </View>
+
+
+                    {/* Right Content(Image and plate) */}
+                    <View className='flex-col w-1/2 items-center justify-center bg-blue-300/20 rounded-r-[10px] gap-[10px]'>
+                        <Image source={require('@/assets/images/Techcar.png')} style={{ height: 90, width: 90 }} />
+                        <Text className='text-[16pt]'>Placa <Text className='text-[16pt] font-bold'>293-b991</Text> <Ionicons name='tablet-landscape-outline' size={25} className='top-[6px]' /></Text>
+                    </View>
                 </View>
-                {/* right Content(Image, Plate and Button) */}
-                <View className="h-[300px] justify-center gap-[10px] items-center w-1/2 flex-col">
-                    <Image
-                        style={{
-                            height: 99,
-                            width: 99,
-                        }}
-                        source={require('@/assets/images/Techcar.png')}
-                    />
-                    <Text className="text-base sm:text-lg md:text-xl">
-                        Placa: <Text className="font-bold">2b3t9990</Text>
-                    </Text>
-                    <Pressable className='w-[150px] rounded-[9px] bg-blue-600 py-[1px] hover:translate-y-[-2px] duration-[600ms]'>
-                        <Text className='text-[15pt] font-bold text-center'>Configurar</Text>
-                    </Pressable>
-                </View>
-            </View>
-            <Text className="text-[15pt] font-bold my-[20px] text-center">Outros Veículos</Text>
-            {/* Others Vehicles */}
-            <View className="w-full max-w-[500px] mx-auto flex-col gap-[30px] items-center mb-[30px] mt-[20px]">
-                {/* Vehicles Cards */}
-                <View className="w-full max-w-[200px] items-center gap-[20px] rounded-[9px] bg-gray-200 h-[150px]">
-                    <Text>Modelo: <Text className="font-bold">Civic</Text></Text>
-                    <Pressable className="w-[80%] hover:bg-green-400 duration-300 shadow-lg rounded-lg">
-                        <Text className="text-center py-[10px]">Abrir</Text>
-                    </Pressable>
-                    <Pressable className="w-[80%] shadow-lg hover:bg-red-400 duration-300 rounded-lg">
-                        <Text className="text-center py-[10px]">Excluir</Text>
-                    </Pressable>
-                </View>
-                {/* Vehicles Cards */}
-                <View className="w-full max-w-[200px] items-center gap-[20px] rounded-[9px] bg-gray-200 h-[150px]">
-                    <Text>Modelo: <Text className="font-bold">Civic</Text></Text>
-                    <Pressable className="w-[80%] hover:bg-green-400 duration-300 shadow-lg rounded-lg">
-                        <Text className="text-center py-[10px]">Abrir</Text>
-                    </Pressable>
-                    <Pressable className="w-[80%] shadow-lg hover:bg-red-400 duration-300 rounded-lg">
-                        <Text className="text-center py-[10px]">Excluir</Text>
-                    </Pressable>
-                </View>
-                {/* Vehicles Cards */}
-                <View className="w-full max-w-[200px] items-center gap-[20px] rounded-[9px] bg-gray-200 h-[150px]">
-                    <Text>Modelo: <Text className="font-bold">Civic</Text></Text>
-                    <Pressable className="w-[80%] hover:bg-green-400 duration-300 shadow-lg rounded-lg">
-                        <Text className="text-center py-[10px]">Abrir</Text>
-                    </Pressable>
-                    <Pressable className="w-[80%] shadow-lg hover:bg-red-400 duration-300 rounded-lg">
-                        <Text className="text-center py-[10px]">Excluir</Text>
-                    </Pressable>
+
+                {/* Other Vehicles */}
+                <View className="w-full max-w-[500px] mx-auto flex-col gap-[30px] items-center mb-[30px] mt-[20px]">
+                    <Text className="text-[15pt] font-bold my-[20px] text-center">Outros Veículos</Text>
+                    <View className="w-full max-w-[90%] items-center gap-[20px] rounded-[9px] bg-gray-200/90 h-[auto] p-4 flex flex-col sm:flex-row">
+                        <View className="flex-1 flex flex-col gap-2 items-start">
+                            <Text>Modelo: <Text className="font-bold">Civic</Text></Text>
+                            <Text>Ano: <Text className="font-bold">2002</Text></Text>
+                            <Text>Placa: <Text className="font-bold">400b-221</Text></Text>
+                        </View>
+                        {/* Buttons */}
+                        <View className='flex flex-row gap-[10px] items-center'>
+                            <Pressable className="h-[40px] w-[40px] items-center group/config justify-center rounded-[10px] bg-gray-400/20">
+                                <Ionicons name='pencil' size={19} />
+                                <Text className='hidden absolute left-1/2 -top-[30px] -translate-x-1/2 bg-green-600 text-white px-2 py-1 rounded group-hover/config:block transition-all  text-xs shadow'>
+                                    Adicionar
+                                </Text>
+                            </Pressable>
+                            <Pressable className="h-[40px] w-[40px] items-center justify-center rounded-[10px] group/trash bg-gray-400/20 relative overflow-visible">
+                                <Ionicons name='trash' size={19} />
+                                <Text className='hidden absolute left-1/2 -top-[30px] -translate-x-1/2 bg-red-600 text-white px-2 py-1 rounded group-hover/trash:block transition-all duration-200 text-xs shadow'>
+                                    Excluir
+                                </Text>
+                            </Pressable>
+                        </View>
+                    </View>
                 </View>
             </View>
         </ScrollView>

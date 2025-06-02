@@ -40,7 +40,7 @@ export function BodyHome() {
                             width='100px' />
 
                         <GlobalButton
-                            action={() => router.push('/Drawer/history')}
+                            action={() => router.push('/Drawer/OwnerPages/financial')}
                             fontBold='semibold' backgroundColor='bg-gray-300' fontSize='11pt' marginBottom='0'
                             marginTop='20px' paddindg='10' height='0' text='Financeiro'
                             width='100px' />

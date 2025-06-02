@@ -1,10 +1,11 @@
 import GlobalReturnButton from '@/src/components/atoms/globalReturnButton';
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
 export default function Payments() {
     return (
-        <ScrollView className='flex-1'>
+        <ScrollView className='flex-1 '>
             <GlobalReturnButton route='home' />
             {/* Top Text */}
             <View className='w-[90%] ml-[5%]  mt-[30px] flex-row items-center pb-[20px] border-b-[2px] border-black'>
@@ -35,11 +36,13 @@ export default function Payments() {
             </View>
 
             {/* Actions buttons */}
-            <View className='w-full items-center mt-[5%]'>
+            <View className='w-full items-center mt-[5%] mb-[30px]'>
                 {/* Content */}
                 <View className='flex-row max-[900px]:flex-col max-[900px]:w-full gap-[20px] '>
 
-                    <Pressable className='w-[250px] max-[900px]:w-[80%] max-[900px]:ml-[10%] h-[200px] rounded-[10px] justify-center items-center flex-row bg-slate-300/60 '>
+                    <Pressable
+                        onPress={() => router.replace('./completedServices')}
+                        className='w-[250px] max-[900px]:w-[80%] max-[900px]:ml-[10%] h-[200px] rounded-[10px] justify-center items-center flex-row bg-slate-300/60 '>
                         <Text className=' font-bold text-[15pt]'>Serviços Finalizados</Text>
                         <Ionicons name='caret-forward' size={20} className='top-[4px]' />
                     </Pressable>

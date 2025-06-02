@@ -1,8 +1,7 @@
 import GlobalReturnButton from '@/src/components/atoms/globalReturnButton';
 import { AreaPressableClient } from '@/src/components/organisms/AreaPressableClient';
 import { Ionicons } from '@expo/vector-icons';
-import { Text, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, Text, View } from 'react-native';
 
 export default function HistoryClient() {
     // const router = useRouter();
