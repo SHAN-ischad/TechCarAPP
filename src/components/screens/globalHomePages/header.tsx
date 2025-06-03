@@ -38,7 +38,7 @@ export function HeaderGlobalHome() {
 
                         />
                         {/* Hover Area */}
-                        <View className="absolute p-[15px] top-[40px] left-[-90px] shadow-md w-fit bg-white text-black text-[8pt] rounded-lg   hidden group-hover/calendar:block">
+                        <View className="absolute p-[15px] top-[40px] left-[-90px] shadow-md w-fit bg-white text-black text-[8pt] rounded-lg  hidden group-hover/calendar:block">
                             {/* User Options */}
                             <View className="items-center w-[200px]">
                                 <Pressable className="p-[10px] rounded-lg items-center bg-green-500 w-[130px]">

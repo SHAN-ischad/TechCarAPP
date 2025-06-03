@@ -4,7 +4,7 @@ import { Image, Pressable, Text, View } from 'react-native';
 export function EmployeeCard() {
     return (
 
-        <View className='w-[200px]  flex-col gap-[30px]  shadow-lg items-center  h-[320px] rounded-[10px]'>
+        <View className='w-[220px]  flex-col gap-[30px]  shadow-lg items-center pt-[5px]  h-[320px] rounded-[10px]'>
             {/* Image */}
             <Image className='h-[80px] rounded-full w-[80px]'
                 source={{ uri: 'https://github.com/SHAN-ischad.png' }} />

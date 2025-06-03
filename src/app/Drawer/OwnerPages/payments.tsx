@@ -28,7 +28,9 @@ export default function Payments() {
                     </View>
                     {/* right content(history) */}
                     <View className='w-[48%] h-[97%] mb-[3%] mr-[2%] justify-end items-end'>
-                        <Pressable className='w-fit'>
+                        <Pressable
+                            onPress={() => router.replace('./historyPayments')}
+                            className='w-fit'>
                             <Text className='text-[10pt] max-md:text-[9pt] max-sm:text-[8pt] text-white font-bold'>Histórico dos últimos meses</Text>
                         </Pressable>
                     </View>
@@ -48,7 +50,9 @@ export default function Payments() {
                     </Pressable>
 
 
-                    <Pressable className='w-[250px] h-[200px] rounded-[10px] max-[900px]:w-[80%] max-[900px]:ml-[10%] justify-center items-center flex-row bg-slate-300/60 '>
+                    <Pressable
+                        onPress={() => router.replace('./financial')}
+                        className='w-[250px] h-[200px] rounded-[10px] max-[900px]:w-[80%] max-[900px]:ml-[10%] justify-center items-center flex-row bg-slate-300/60 '>
                         <Text className=' font-bold text-[15pt]'>Ir para Financeiro</Text>
                         <Ionicons name='caret-forward' size={20} className='top-[4px]' />
                     </Pressable>
