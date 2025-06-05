@@ -1,6 +1,6 @@
 import GlobalHeader from '@/src/components/organisms/header';
 import { useEffect, useState } from 'react';
-import { Text, View, } from 'react-native';
+import { ScrollView, Text, View, } from 'react-native';
 import { ContentPage } from '../../components/screens/servicePage/content';
 
 export default function Service() {
@@ -17,7 +17,7 @@ export default function Service() {
         items-center'><Text>Carregando...</Text></View>
     } else {
         return (
-            <View className='h-full w-full bg-white overflow-auto overflow-x-hidden ' >
+            <ScrollView className='flex-1 bg-white overflow-auto  ' >
                 <View className=''>
                     <GlobalHeader />
                 </View>
@@ -28,10 +28,10 @@ export default function Service() {
                     <Text className='font-bold text-[20pt]'>Crie seus serviços e configure-os</Text>
                 </View>
 
-                <View className='w-full' >
+                <View className='mt-[7%]' >
                     <ContentPage />
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 

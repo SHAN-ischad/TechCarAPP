@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import { Pressable, View } from 'react-native';
 
 export default function Notifications() {
@@ -9,7 +10,7 @@ export default function Notifications() {
 
     return (
         <Pressable
-            onPress={() => console.log('Notifications pressed')}
+            onPress={() => router.navigate('/notificationsPage')}
             className='flex-1  relative'>
             <Ionicons name='notifications' size={20} />
             {notifications.length > 0 && (
