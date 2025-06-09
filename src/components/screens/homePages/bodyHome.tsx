@@ -7,7 +7,7 @@ import { GlobalInputs } from '../../atoms/globalInputs';
 
 export function BodyHome() {
     return (
-        <View className='w-full max-sm:items-center mt-[2.5%] max-sm:mt-[0%] h-fit   ' >
+        <View className='flex-1 gap-[20px] ' >
             {/* User */}
             <View className='w-full max-sm:justify-center gap-[20px]  '>
                 {/* tag User */}

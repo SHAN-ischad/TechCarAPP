@@ -1,3 +1,4 @@
+import { useFonts } from 'expo-font';
 import { Drawer } from 'expo-router/drawer';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import '../../style/global.css';
@@ -5,6 +6,13 @@ import '../../style/global.css';
 
 
 export default function Layout() {
+    const [fontsLoaded] = useFonts({
+        'SourceSans3': require('../../../assets/fonts/SourceSans3-Italic-VariableFont_wght.ttf'),
+    })
+
+    if (!fontsLoaded) {
+        return null
+    }
     return (
         <GestureHandlerRootView >
             <Drawer screenOptions={{ headerShown: false }
