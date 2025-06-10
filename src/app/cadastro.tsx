@@ -39,7 +39,7 @@ export default function Cadastro() {
                 progress: undefined
             });
             setTimeout(() => {
-                router.replace('/Drawer/home');
+                router.replace('/postCadaster');
             }, 2000);
         }
     };

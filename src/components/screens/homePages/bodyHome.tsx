@@ -7,7 +7,7 @@ import { GlobalInputs } from '../../atoms/globalInputs';
 
 export function BodyHome() {
     return (
-        <View className='w-full max-sm:items-center mt-[2.5%] max-sm:mt-[0%] h-fit   ' >
+        <View className='flex-1 gap-[20px] ' >
             {/* User */}
             <View className='w-full max-sm:justify-center gap-[20px]  '>
                 {/* tag User */}
@@ -26,7 +26,7 @@ export function BodyHome() {
                     {/* Input */}
                     <View className='w-[700px] flex-row items-center justify-center  max-sm:w-full  '>
 
-                        <GlobalInputs setAtribute={() => { }} backgroundColor='bg-slate-200' borderRadius='10px' padding='10px' placeholder='Pesquisar por...' value='' marginBottom='0px' marginLeft='0' marginRight='0' marginTop='0px' />
+                        <GlobalInputs setAtribute={() => { }} backgroundColor='' borderRadius='10px' padding='10px' placeholder='Pesquisar por...' value='' marginBottom='0px' marginLeft='0' marginRight='0' marginTop='0px' />
                         <Ionicons name='search' size={25} color={"black"} className='right-[40px] ' />
                     </View>
 

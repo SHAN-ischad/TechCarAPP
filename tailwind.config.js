@@ -14,6 +14,9 @@ module.exports = {
                     '50%': { transform: 'translateX(10px)' },
                     '100%': { transform: 'translateX(0)' },
                 }
+            },
+            fontFamily: {
+                sourceSans3: ['SourceSans3', 'sans-serif'],
             }
         },
     },

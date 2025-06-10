@@ -21,6 +21,15 @@ export default function CompletedServices() {
             fechamento: '12/05/2025',
             total: 'R$ 800,00'
         },
+        {
+            id: 3,
+            nome: 'Manuel Souza',
+            carro: 'Fox',
+            cpf: '987.654.321-00',
+            abertura: '10/05/2025',
+            fechamento: '12/05/2025',
+            total: 'R$ 800,00'
+        },
     ];
 
     return (
