@@ -29,16 +29,18 @@ export default function BodyGlobalHome() {
 
 
 
-        <View className="w-[90%]   max-w-[1200px] mx-auto max-[900px]:mt-[30%] mt-[8%] items-center">
+        <View className="w-[90%]  mt-[11.5%]   mx-auto max-[900px]:mt-[18.5%]  items-center">
             {/* Banner */}
-            <View className='w-full min-[1001px]:h-[670px] items-center h-[540px] mb-[50px] max-[1000px]:hidden'>
+            <View className='w-full min-[1001px]:h-[690px] items-center  mb-[50px] max-[1000px]:hidden'>
                 <Image source={require('@/assets/images/image.png')}
                     style={{ height: '100%', width: '100%', borderRadius: 10 }} />
             </View>
+
             {/* Body top Content */}
             <View className="w-full max-[950px]:flex-col max-[950px]:mb-[10%] max-[900px]:mb-[25%] max-[950px]:border-0 h-[350px] py-[12px] border-b border-gray-300 gap-[6%] items-center flex-row">
+
                 {/* Left Content */}
-                <View className="shadow-md justify-center min-w-fit h-[200px] rounded-2xl w-[52%] max-[950px]:w-full max-[950px]:mb-4">
+                <View className="shadow-md justify-center min-w-fit h-[200px] rounded-2xl w-[50px] max-[950px]:w-full max-[950px]:mb-4">
                     <Text className="text-[22pt] max-[900px]:text-[14pt] w-full font-medium text-center">
                         Bem vindo a TechCar.
                         {'\n'}Melhor Aplicativo para Gerenciar
@@ -47,7 +49,7 @@ export default function BodyGlobalHome() {
                 </View>
 
                 {/* Carrossel  */}
-                <View className="items-center overflow-visible justify-center  mt-5 w-[350px] max-[900px]:w-[250px]">
+                <View className="items-center  justify-center   mt-5 w-[990px] max-[900px]:w-[250px]">
                     <View className="relative flex-row items-center">
                         <Pressable
                             onPress={goToPreviousImage}

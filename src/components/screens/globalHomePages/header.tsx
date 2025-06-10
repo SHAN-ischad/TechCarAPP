@@ -2,14 +2,13 @@ import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { Image, NativeSyntheticEvent, Pressable, Text, TextInputChangeEventData, View } from 'react-native';
 import { GlobalInputs } from '../../atoms/globalInputs';
-import { TechCar } from '../../atoms/logoTechCar';
 
 export function HeaderGlobalHome() {
     return (
-        <View className=" border-b-[0.1px] max-[400px]:justify-center max-[400px]:gap-[50%]  border-gray-300 pb-[20px] w-full ml-[10%] mr-[10%] justify-around items-center flex-row">
+        <View className=" border-b-[0.1px] max-[400px]:justify-center max-[400px]:gap-[50%]  border-gray-300  w-full mx-auto justify-around items-center flex-row">
             {/* Logo */}
             <View >
-                <TechCar height={79} width={79} />
+                <Image source={require('@/assets/images/MinimalistTechCarFinal.png')} style={{ height: 70, width: 70 }} />
             </View>
             {/* Inputs for Search */}
             <View className="h-fit max-[400px]:hidden flex-row items-center  max-[900px]:w-[300px] w-[500px]">
@@ -38,9 +37,9 @@ export function HeaderGlobalHome() {
 
                         />
                         {/* Hover Area */}
-                        <View className="absolute p-[15px] top-[40px] left-[-90px] shadow-md w-fit bg-white text-black text-[8pt] rounded-lg  hidden group-hover/calendar:block">
+                        <View className="absolute max-h-[180px] p-[15px] top-[25px] left-[-90px] shadow-md w-fit bg-white text-black text-[8pt] rounded-lg hidden group-hover/calendar:block">
                             {/* User Options */}
-                            <View className="items-center w-[200px]">
+                            <View className="items-center mb-20  w-[200px]">
                                 <Pressable className="p-[10px] rounded-lg items-center bg-green-500 w-[130px]">
                                     <Text className="text-[12pt] text-white font-semibold">Entrar</Text>
                                 </Pressable>
