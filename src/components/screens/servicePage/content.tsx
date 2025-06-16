@@ -1,10 +1,7 @@
-// import { Ionicons } from '@expo/vector-icons';
-// <<<<<<< HEAD
-// import { router } from 'expo-router';
-// =======
-// >>>>>>> 39ccb89c27bc1f70f95e92849e3ee7f4f3aa3b6a
-// import { Pressable, Text, TextInput, View } from 'react-native';
-// import ServiceCard from '../../organisms/ServicesComponents/serviceCard';
+import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
+import { Pressable, Text, TextInput, View } from 'react-native';
+import ServiceCard from '../../organisms/ServicesComponents/serviceCard';
 
 
 export function ContentPage() {
