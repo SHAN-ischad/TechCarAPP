@@ -34,28 +34,24 @@ export function ContentPage() {
                         </Text>
                         <Ionicons name="create" size={26} />
                     </Pressable>
-<<<<<<< HEAD
-    <Pressable
-        onPress={() => router.push('/Drawer/OwnerPages/completedServices')}
-        className="bg-slate-500/10 w-[180px] min-h-[100px] rounded-lg p-5 items-center justify-center hover:bg-blue-200 gap-[2px] duration-300 flex-row">
-=======
-                    <Pressable className="bg-slate-500/10 w-[180px] min-h-[100px] rounded-lg p-5 items-center justify-center hover:bg-blue-200 gap-[2px] duration-300 flex-row">
->>>>>>> 39ccb89c27bc1f70f95e92849e3ee7f4f3aa3b6a
-            <Text className="font-bold text-[12pt]">
-                Ver todos
-            </Text>
-            <Ionicons name="albums-outline" size={26} />
-        </Pressable>
-    </View>
+                    <Pressable
+                        onPress={() => router.push('/Drawer/OwnerPages/completedServices')}
+                        className="bg-slate-500/10 w-[180px] min-h-[100px] rounded-lg p-5 items-center justify-center hover:bg-blue-200 gap-[2px] duration-300 flex-row">
+                        <Text className="font-bold text-[12pt]">
+                            Ver todos
+                        </Text>
+                        <Ionicons name="albums-outline" size={26} />
+                    </Pressable>
+                </View>
             </View >
-        {/* Top Text */ }
-        < View className = 'w-[96%] border-b-[2px] ml-[1%]' >
-            <Text className='text-[20pt]'>Serviços Ativos</Text>
+            {/* Top Text */}
+            < View className='w-[96%] border-b-[2px] ml-[1%]' >
+                <Text className='text-[20pt]'>Serviços Ativos</Text>
             </View >
-        {/* Services Area */ }
-        < View className = 'w-full mt-[20px] min-h-[200px] max-h-fit grid grid-cols-3 max-[1200px]:flex max-[1200px]:flex-col  max-[1200px]:items-center max-[1200px]:ml-[0%] gap-[20px]  ' >
-            {/* Service */ }
-            < ServiceCard />
+            {/* Services Area */}
+            < View className='w-full mt-[20px] min-h-[200px] max-h-fit grid grid-cols-3 max-[1200px]:flex max-[1200px]:flex-col  max-[1200px]:items-center max-[1200px]:ml-[0%] gap-[20px]  ' >
+                {/* Service */}
+                < ServiceCard />
                 <ServiceCard />
                 <ServiceCard />
                 <ServiceCard />
