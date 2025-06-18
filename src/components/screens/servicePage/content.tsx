@@ -37,19 +37,20 @@ export function ContentPage() {
                     <Pressable
                         onPress={() => setModalVisible(true)}
                         className="bg-slate-500/10 
-                    w-[180px] min-h-[100px] rounded-lg p-5 items-center justify-center hover:bg-blue-200 gap-[2px] duration-300 flex-row">
-                        <Text className="font-bold text-[12pt]">
+    w - [180px] min - h - [100px] rounded - lg p - 5 items - center justify - center hover: bg - blue - 200 gap - [2px] duration - 300 flex - row">
+                        < Text className="font-bold text-[12pt]" >
                             Criar
-                        </Text>
+                        </Text >
                         <Ionicons name="create" size={26} />
-                    </Pressable>
+                    </Pressable >
 
                     {/* Modal de Criação */}
-                    <Modal
+                    < Modal
                         visible={modalVisible}
                         transparent
                         animationType='fade'
-                        onRequestClose={() => setModalVisible(false)}
+                        onRequestClose={() => setModalVisible(false)
+                        }
                     >
                         <View className="flex-1 bg-black/10 justify-center items-center">
                             <View className="bg-white rounded-lg p-8 w-[90%] max-w-[400px] items-center">
@@ -134,7 +135,7 @@ export function ContentPage() {
                                 </View>
                             </View>
                         </View>
-                    </Modal>
+                    </Modal >
                     <Pressable
                         onPress={() => router.push('/Drawer/OwnerPages/completedServices')}
                         className="bg-slate-500/10 w-[180px] min-h-[100px] rounded-lg p-5 items-center justify-center hover:bg-blue-200 gap-[2px] duration-300 flex-row">
@@ -143,20 +144,20 @@ export function ContentPage() {
                         </Text>
                         <Ionicons name="albums-outline" size={26} />
                     </Pressable>
-                </View>
-            </View>
+                </View >
+            </View >
             {/* Top Text */}
-            <View className='w-[96%] border-b-[2px] ml-[1%]'>
+            < View className='w-[96%] border-b-[2px] ml-[1%]' >
                 <Text className='text-[20pt]'>Serviços Ativos</Text>
-            </View>
+            </View >
             {/* Services Area */}
-            <View className='w-full mt-[20px] min-h-[200px] max-h-fit grid grid-cols-3 max-[1200px]:flex max-[1200px]:flex-col  max-[1200px]:items-center max-[1200px]:ml-[0%] gap-[20px]  '>
+            < View className='w-full mt-[20px] min-h-[200px] max-h-fit grid grid-cols-3 max-[1200px]:flex max-[1200px]:flex-col  max-[1200px]:items-center max-[1200px]:ml-[0%] gap-[20px]  ' >
                 {/* Service */}
+                < ServiceCard />
                 <ServiceCard />
                 <ServiceCard />
                 <ServiceCard />
-                <ServiceCard />
-            </View>
-        </View>
+            </View >
+        </View >
     );
 }

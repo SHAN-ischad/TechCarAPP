@@ -21,23 +21,9 @@ export default function Cadastro() {
 
     const redirect = () => {
         if (userName.trim() === '' || userEmail.trim() === '' || userPassword.trim() === '') {
-            toast.error('Preencha todos os campos para se cadastrar', {
-                position: 'top-right',
-                autoClose: 2000,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined
-            });
+            toast.error('Preencha todos os campos para se cadastrar', {});
         } else {
-            toast.success('Cadastro feito com sucesso', {
-                position: 'top-right',
-                autoClose: 2000,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined
-            });
+            toast.success('Redirecionando', {});
             setTimeout(() => {
                 router.replace('/postCadaster');
             }, 2000);
@@ -154,7 +140,13 @@ export default function Cadastro() {
                     </View>
                 </View>
             </View>
-            <ToastContainer />
+            <ToastContainer position="top-right"
+                autoClose={2000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                draggable />
         </>
     );
 }
