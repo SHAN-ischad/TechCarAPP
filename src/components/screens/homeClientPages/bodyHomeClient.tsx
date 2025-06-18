@@ -26,7 +26,7 @@ export default function BodyHomeClient() {
                     {/* Input */}
                     <View className='w-[700px] flex-row items-center justify-center  max-sm:w-full  '>
 
-                        <GlobalInputs setAtribute={() => { }} backgroundColor='bg-slate-200' borderRadius='10px' padding='10px' placeholder='Pesquisar por...' value='' marginBottom='0px' marginLeft='0' marginRight='0' marginTop='0px' />
+                        <GlobalInputs setAtribute={() => { }} backgroundColor='' borderRadius='10px' padding='10px' placeholder='Pesquisar por...' value='' marginBottom='0px' marginLeft='0' marginRight='0' marginTop='0px' />
                         <Ionicons name='search' size={25} color={"black"} className='right-[40px] ' />
                     </View>
 
