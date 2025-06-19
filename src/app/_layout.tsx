@@ -1,19 +1,22 @@
 import { Stack } from 'expo-router';
-
+import { CadastroProvider } from './CadastroProvider';
 
 export default function Layout() {
     return (
-        <Stack screenOptions={{ headerShown: false }} >
-            <Stack.Screen
-                name='index' />
+        <CadastroProvider>
 
-            <Stack.Screen
-                name='cadastro' />
+            <Stack screenOptions={{ headerShown: false }} >
+                <Stack.Screen
+                    name='index' />
 
-            <Stack.Screen
-                name='globalHome' />
-        </Stack>
+                <Stack.Screen
+                    name='cadastro' />
 
+                <Stack.Screen
+                    name='globalHome' />
+            </Stack>
+
+        </CadastroProvider>
 
     );
 }

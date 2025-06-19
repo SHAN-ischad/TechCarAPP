@@ -33,7 +33,7 @@ export function useCadasterUser() {
         setSuccess(false);
         try {
             // Altere a URL para o endpoint real da sua API
-            await axios.post('https://sua-api.com/cadastro', userData);
+            await axios.post('http://localhost:5000/clientes', userData);
             setSuccess(true);
         } catch (err: any) {
             setError(err?.response?.data?.message || 'Erro ao cadastrar usuário');

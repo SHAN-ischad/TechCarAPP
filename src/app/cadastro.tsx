@@ -7,8 +7,11 @@ import { ButtonEnv } from '../components/atoms/buttonEnv';
 import { GlobalInputs } from '../components/atoms/globalInputs';
 import { TechCar } from '../components/atoms/logoTechCar';
 import { styled } from '../style/style';
+import { useCadastro } from './CadastroProvider';
+
 
 export default function Cadastro() {
+    const { cadastro, setCadastro } = useCadastro()
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
@@ -24,6 +27,12 @@ export default function Cadastro() {
             toast.error('Preencha todos os campos para se cadastrar', {});
         } else {
             toast.success('Redirecionando', {});
+            setCadastro({
+                ...cadastro,
+                nome: userName,
+                email: userEmail,
+                senha: userPassword,
+            })
             setTimeout(() => {
                 router.replace('/postCadaster');
             }, 2000);

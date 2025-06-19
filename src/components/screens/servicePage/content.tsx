@@ -37,7 +37,7 @@ export function ContentPage() {
                     <Pressable
                         onPress={() => setModalVisible(true)}
                         className="bg-slate-500/10 
-    w - [180px] min - h - [100px] rounded - lg p - 5 items - center justify - center hover: bg - blue - 200 gap - [2px] duration - 300 flex - row">
+    w-[180px] min-h-[100px] rounded-lg p-5 items-center justify-center hover:bg-blue-200 gap-[2px] duration-300 flex-row">
                         < Text className="font-bold text-[12pt]" >
                             Criar
                         </Text >
@@ -151,9 +151,9 @@ export function ContentPage() {
                 <Text className='text-[20pt]'>Serviços Ativos</Text>
             </View >
             {/* Services Area */}
-            < View className='w-full mt-[20px] min-h-[200px] max-h-fit grid grid-cols-3 max-[1200px]:flex max-[1200px]:flex-col  max-[1200px]:items-center max-[1200px]:ml-[0%] gap-[20px]  ' >
+            < View className='w-[99%] mb-[20px] ml-[1%] mt-[20px] min-h-[200px] max-h-fit grid grid-cols-3 max-[1300px]:flex max-[1300px]:flex-col max-[1300px]:items-center max-[1300px]:ml-[0%] gap-[20px] ' >
                 {/* Service */}
-                < ServiceCard />
+                <ServiceCard />
                 <ServiceCard />
                 <ServiceCard />
                 <ServiceCard />

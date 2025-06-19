@@ -5,10 +5,22 @@ import { useState } from 'react';
 import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { toast, ToastContainer } from 'react-toastify';
 import GlobalBottom from '../components/organisms/globalBottom';
+import { useCadastro } from './CadastroProvider';
 
 export default function PostCadaster() {
+
+
+
+    const { cadastro, setCadastro } = useCadastro();
     const [selectedAccount, setSelectedAccount] = useState('');
     const [acceptedTerms, setAcceptedTerms] = useState(false);
+    const [cpf, setCpf] = useState('');
+    const [dataNascimento, setDataNascimento] = useState('');
+    const [idade, setIdade] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [estado, setEstado] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [error, setError] = useState('');
 
     const handdleAcountType = () => {
         if (selectedAccount === 'cliente') {
@@ -46,6 +58,35 @@ export default function PostCadaster() {
                 progress: undefined
             });
         }
+        const formVerification = () => {
+            if (!cpf.trim() || cpf.length !== 11) {
+                setError('Preencha o CPF corretamente (11 dígitos).');
+                return false;
+            }
+            if (!dataNascimento.trim()) {
+                setError('Preencha a data de nascimento.');
+                return false;
+            }
+            if (!idade.trim() || isNaN(Number(idade))) {
+                setError('Preencha a idade corretamente.');
+                return false;
+            }
+            if (!cidade.trim()) {
+                setError('Preencha a cidade.');
+                return false;
+            }
+            if (!estado.trim()) {
+                setError('Preencha o estado.');
+                return false;
+            }
+            if (!telefone.trim() || telefone.length < 10) {
+                setError('Preencha o telefone corretamente.');
+                return false;
+            }
+            setError('');
+            return true;
+        };
+        return formVerification
     }
 
     return (
