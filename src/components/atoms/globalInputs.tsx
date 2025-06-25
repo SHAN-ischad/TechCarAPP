@@ -14,6 +14,7 @@ interface GlobalInputsProps {
     marginRight: string,
     marginBottom: string,
     setAtribute: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void,
+    onchangeText?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void
 }
 
 
