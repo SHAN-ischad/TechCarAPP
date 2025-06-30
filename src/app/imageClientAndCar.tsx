@@ -1,12 +1,29 @@
 import { Ionicons } from '@expo/vector-icons';
+import * as ImageManipulator from 'expo-image-manipulator';
 import * as ImagePicker from 'expo-image-picker';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { Image, Pressable, ScrollView, Text, View } from 'react-native';
+import { useCadasterUser } from '../hooks/cadasterUser';
+import { useCadastro } from './CadastroProvider';
 
 export default function ImageClientAndCar() {
+    const { cadastro } = useCadastro();
+    const { cadastrarUsuario, success } = useCadasterUser();
     const [clientImage, setClientImage] = useState<string | null>(null);
     const [carImage, setCarImage] = useState<string | null>(null);
+
+    const handleContinue = async () => {
+        if (!clientImage || !carImage) return;
+        await cadastrarUsuario({
+            ...cadastro,
+            clientImage,
+            carImage,
+            tipoConta: 'cliente'
+        });
+        // Redireciona para a tela de loading, passando o tipo de conta
+        router.replace({ pathname: '/loadingScreen', params: { tipoConta: 'cliente' } });
+    };
 
     // Função para selecionar imagem
     const pickImage = async (setImage: (uri: string | null) => void) => {
@@ -15,10 +32,18 @@ export default function ImageClientAndCar() {
             allowsEditing: true,
             aspect: [1, 1],
             quality: 1,
+            base64: true,
         });
 
         if (!result.canceled && result.assets && result.assets.length > 0) {
-            setImage(result.assets[0].uri);
+            // Redimensiona e comprime a imagem
+            const manipResult = await ImageManipulator.manipulateAsync(
+                result.assets[0].uri,
+                [{ resize: { width: 600 } }],
+                { compress: 0.7, format: ImageManipulator.SaveFormat.JPEG, base64: true }
+            );
+            // Salve como base64!
+            setImage(`data:image/jpeg;base64,${manipResult.base64}`);
         }
     };
 
@@ -58,7 +83,7 @@ export default function ImageClientAndCar() {
                         {carImage ? (
                             <Image
                                 source={{ uri: carImage }}
-                                className='w-[170px] h-[110px] rounded-full'
+                                className='w-[130px] h-[130px] rounded-full'
                             />
                         ) : (
                             <Text className='text-gray-400 text-center'>Selecionar Imagem</Text>
@@ -76,9 +101,7 @@ export default function ImageClientAndCar() {
                     </Pressable>
 
                     <Pressable
-                        onPress={() => {
-                            if (canContinue) router.push('/Drawer/homeClient');
-                        }}
+                        onPress={handleContinue}
                         disabled={!canContinue}
                         className={`min-w-[200px] min-h-[50px] items-center justify-center rounded-[10px] ${canContinue ? 'bg-blue-500/60' : 'bg-gray-400'}`}>
                         <Text className='text-[13pt] text-white font'>Continuar..</Text>

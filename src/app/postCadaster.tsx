@@ -7,12 +7,15 @@ import { toast, ToastContainer } from 'react-toastify';
 import GlobalBottom from '../components/organisms/globalBottom';
 import { useCadastro } from './CadastroProvider';
 
+function toISODate(dateBr: string): string {
+    // Espera "DD/MM/AAAA"
+    const [day, month, year] = dateBr.split('/');
+    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+}
+
 export default function PostCadaster() {
-
-
-
     const { cadastro, setCadastro } = useCadastro();
-    const [selectedAccount, setSelectedAccount] = useState('');
+    const [selectedAccount, setSelectedAccount] = useState<"cliente" | "proprietário" | "">('');
     const [acceptedTerms, setAcceptedTerms] = useState(false);
     const [cpf, setCpf] = useState('');
     const [dataNascimento, setDataNascimento] = useState('');
@@ -20,74 +23,57 @@ export default function PostCadaster() {
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
     const [telefone, setTelefone] = useState('');
-    const [error, setError] = useState('');
 
-    const handdleAcountType = () => {
-        if (selectedAccount === 'cliente') {
-            // Navigate to car cadaster
-            setTimeout(() => {
-                router.push('/carCadaster');
-            }, 2000);
-            toast.success('Cadastro completo. Tipo de Conta: Cliente', {
-                position: 'top-right',
-                autoClose: 2000,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined
-            });
-        } else if (selectedAccount === 'proprietário') {
-            // Navigate to office cadaster
-            router.push('/officerCadaster');
-
-            toast.success('Cadastro completo. Tipo de Conta: Proprietário', {
-                position: 'top-right',
-                autoClose: 2000,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined
-            });
-        } else {
-            toast.error('Escolha um tipo de conta', {
-                position: 'top-right',
-                autoClose: 2000,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined
-            });
+    const handleContinue = () => {
+        if (!selectedAccount) {
+            toast.error('Escolha um tipo de conta');
+            return;
         }
-        const formVerification = () => {
-            if (!cpf.trim() || cpf.length !== 11) {
-                setError('Preencha o CPF corretamente (11 dígitos).');
-                return false;
-            }
-            if (!dataNascimento.trim()) {
-                setError('Preencha a data de nascimento.');
-                return false;
-            }
-            if (!idade.trim() || isNaN(Number(idade))) {
-                setError('Preencha a idade corretamente.');
-                return false;
-            }
-            if (!cidade.trim()) {
-                setError('Preencha a cidade.');
-                return false;
-            }
-            if (!estado.trim()) {
-                setError('Preencha o estado.');
-                return false;
-            }
-            if (!telefone.trim() || telefone.length < 10) {
-                setError('Preencha o telefone corretamente.');
-                return false;
-            }
-            setError('');
-            return true;
-        };
-        return formVerification
-    }
+        if (!/^\d{11}$/.test(cpf.replace(/\D/g, ''))) {
+            toast.error('Preencha o CPF corretamente (11 dígitos, só números).');
+            return;
+        }
+        if (!/^\d{2}\/\d{2}\/\d{4}$/.test(dataNascimento.trim())) {
+            toast.error('Data de nascimento deve estar no formato DD/MM/AAAA.');
+            return;
+        }
+        if (!idade.trim() || isNaN(Number(idade)) || Number(idade) < 0 || Number(idade) > 120) {
+            toast.error('Preencha a idade corretamente (apenas números, entre 0 e 120).');
+            return;
+        }
+        if (!cidade.trim() || cidade.length < 2) {
+            toast.error('Preencha a cidade corretamente.');
+            return;
+        }
+        if (!estado.trim() || estado.length < 2) {
+            toast.error('Preencha o estado corretamente.');
+            return;
+        }
+        if (!/^\d{10,11}$/.test(telefone.replace(/\D/g, ''))) {
+            toast.error('Telefone inválido. Use DDD + número, só números.');
+            return;
+        }
+        if (!acceptedTerms) {
+            toast.error('Você deve aceitar os termos.');
+            return;
+        }
+        setCadastro({
+            ...cadastro,
+            cpf: cpf.replace(/\D/g, ''),
+            dataNascimento: toISODate(dataNascimento),
+            idade,
+            cidade,
+            estado,
+            telefone: telefone.replace(/\D/g, ''),
+        });
+        if (selectedAccount === 'cliente') {
+            router.push('/carCadaster');
+        } else if (selectedAccount === 'proprietário') {
+            router.push('/officerCadaster');
+        } else {
+            toast.error('Selecione um tipo de conta');
+        }
+    };
 
     return (
         <ScrollView className='flex-1' >
@@ -116,13 +102,37 @@ export default function PostCadaster() {
 
                     <View className='w-fit items-center gap-[10px]'>
                         <View className='w-full items-center flex-row gap-[10px] max-[900px]:flex-col'>
-                            <TextInput className='min-w-[220px] pl-[10px] min-h-[45px] max-[900px]:min-h-[35px]  rounded-[10px] placeholder:text-[12pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px]  ' placeholder='CPF' />
-                            <TextInput className='min-w-[220px] pl-[10px] min-h-[45px] max-[900px]:min-h-[35px]  rounded-[10px] placeholder:text-[12pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px]  ' placeholder='Data de nascimento' />
+                            <TextInput
+                                value={cpf}
+                                onChangeText={setCpf}
+                                className='min-w-[220px] pl-[10px] min-h-[45px] max-[900px]:min-h-[35px]  rounded-[10px] placeholder:text-[12pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px]  ' placeholder='CPF' />
+                            <TextInput
+
+                                value={dataNascimento}
+                                onChangeText={setDataNascimento}
+                                className='min-w-[220px] pl-[10px] min-h-[45px] max-[900px]:min-h-[35px]  rounded-[10px] placeholder:text-[11.5pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px] ' placeholder='Data De Nascimento ' />
                         </View>
-                        <TextInput className='min-w-[220px] pl-[10px] min-h-[35px]  rounded-[10px] placeholder:text-[12pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px]  ' placeholder='Idade' />
-                        <TextInput className='min-w-[220px] pl-[10px] min-h-[35px]  rounded-[10px] placeholder:text-[12pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px]  ' placeholder='Cidade' />
-                        <TextInput className='min-w-[220px] pl-[10px] min-h-[35px]  rounded-[10px] placeholder:text-[12pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px]  ' placeholder='Estado' />
-                        <TextInput className='min-w-[220px] pl-[10px] min-h-[35px]  rounded-[10px] placeholder:text-[12pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px]  ' placeholder='Telefone' />
+
+                        <TextInput
+                            value={idade}
+                            onChangeText={setIdade}
+                            className='min-w-[220px] pl-[10px] min-h-[35px]  rounded-[10px] placeholder:text-[12pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px]  ' placeholder='Idade' />
+
+                        <TextInput
+                            value={cidade}
+                            onChangeText={setCidade}
+                            className='min-w-[220px] pl-[10px] min-h-[35px]  rounded-[10px] placeholder:text-[12pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px]  ' placeholder='Cidade' />
+
+                        <TextInput
+                            value={estado}
+                            onChangeText={setEstado}
+                            className='min-w-[220px] pl-[10px] min-h-[35px]  rounded-[10px] placeholder:text-[12pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px]  ' placeholder='Estado' />
+
+                        <TextInput
+                            value={telefone}
+                            onChangeText={setTelefone}
+                            className='min-w-[220px] pl-[10px] min-h-[35px]  rounded-[10px] placeholder:text-[12pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px]  ' placeholder='Telefone' />
+
                     </View>
 
                     {/* Checkbox */}
@@ -149,7 +159,7 @@ export default function PostCadaster() {
                     className='min-w-[200px] items-center justify-center min-h-[50px] rounded-[10px] bg-blue-500/60'><Text className='text-[15pt] text-white font'><Ionicons name='caret-back' size={20} className='top-[3.7px]' />Voltar</Text></Pressable>
 
                 <Pressable
-                    onPress={handdleAcountType}
+                    onPress={handleContinue}
                     className='min-w-[200px] min-h-[50px] items-center justify-center rounded-[10px] bg-blue-500/60'><Text className='text-[13pt] text-white font'>Continuar..</Text></Pressable>
             </View>
 

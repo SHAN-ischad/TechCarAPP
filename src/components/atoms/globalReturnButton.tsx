@@ -19,7 +19,7 @@ export default function GlobalReturnButton({ route }: GlobalReturnButtonProps) {
         <View >
             <Pressable
                 onPress={() => r.push(`/Drawer/${route}` as const)}
-                className=" ml-[20px] w-[90px] flex-row mt-[30px] gap-[10px] group/back items-center py-[10px] bg-gray-400  rounded-[10px]"
+                className=" ml-[20px] w-[90px] flex-row mt-[30px] gap-[10px] group/back items-center py-[10px] bg-slate-300/20 border-[1px]  rounded-[10px]"
             >
                 <Ionicons name="caret-back" style={{}} size={20} className='group-hover/back:animate-move-side' />
                 <Text style={{ fontSize: 17, fontWeight: '500', textAlign: 'center' }}>Voltar</Text>

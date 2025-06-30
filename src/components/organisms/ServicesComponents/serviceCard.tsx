@@ -7,7 +7,7 @@ export default function ServiceCard() {
     const [isTrashHovered, setIsTrashHovered] = useState(false);
     return (
         <>
-            <View className='w-[420px] rounded-[10px] p-[10px] bg-slate-400/10  h-[270px] '>
+            <View className='w-[420px] rounded-[10px] p-[10px] bg-slate-300/20 border-[1px]  h-[270px] '>
                 {/* Content */}
                 <View className='w-full flex-row  gap-[20px]'>
 
