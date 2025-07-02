@@ -1,7 +1,7 @@
 import GlobalReturnButton from '@/src/components/atoms/globalReturnButton';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Image, Pressable, ScrollView, Text, View } from 'react-native';
 
 export default function Payments() {
     return (
@@ -10,10 +10,12 @@ export default function Payments() {
             {/* Top Text */}
             <View className='w-[90%] ml-[5%]  mt-[30px] flex-row items-center pb-[20px] border-b-[2px] border-black'>
                 <Text className='text-[19pt] font-bold'>Pagamentos</Text>
+                <Image style={{ height: 60, width: 60 }} source={require('@/assets/images/MinimalistTechCarFinal.png')} />
+
             </View>
 
             {/* monthly amount */}
-            <View className='w-full mt-[5%] items-center '>
+            <View className='w-full mt-[3%] items-center '>
                 {/* content */}
                 <View className='w-[80%] bg-blue-500 flex-row items-center  h-[200px] rounded-[10px]'>
                     {/* left Content(Value and Amount Services) */}
@@ -44,7 +46,7 @@ export default function Payments() {
 
                     <Pressable
                         onPress={() => router.replace('./completedServices')}
-                        className='w-[250px] max-[900px]:w-[80%] max-[900px]:ml-[10%] h-[200px] rounded-[10px] justify-center items-center flex-row bg-slate-300/60 '>
+                        className='w-[250px] max-[900px]:w-[80%] max-[900px]:ml-[10%] h-[200px] rounded-[10px] justify-center items-center flex-row bg-slate-300/20 border-[1px] '>
                         <Text className=' font-bold text-[15pt]'>Serviços Finalizados</Text>
                         <Ionicons name='caret-forward' size={20} className='top-[4px]' />
                     </Pressable>
@@ -52,7 +54,7 @@ export default function Payments() {
 
                     <Pressable
                         onPress={() => router.replace('./financial')}
-                        className='w-[250px] h-[200px] rounded-[10px] max-[900px]:w-[80%] max-[900px]:ml-[10%] justify-center items-center flex-row bg-slate-300/60 '>
+                        className='w-[250px] h-[200px] rounded-[10px] max-[900px]:w-[80%] max-[900px]:ml-[10%] justify-center items-center flex-row bg-slate-300/20 border-[1px] '>
                         <Text className=' font-bold text-[15pt]'>Ir para Financeiro</Text>
                         <Ionicons name='caret-forward' size={20} className='top-[4px]' />
                     </Pressable>

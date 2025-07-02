@@ -1,4 +1,4 @@
-import { ScrollView, Text, View } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 import GlobalReturnButton from '../components/atoms/globalReturnButton';
 import { NotificationsArea } from '../components/organisms/notificationsArea';
 
@@ -9,8 +9,10 @@ export default function NotificationsPages() {
             <GlobalReturnButton route='home' />
 
             {/* Top Text */}
-            <View className='w-[97%] mt-[30px] ml-[2%] pb-[20px] border-b-[2px]'>
+            <View className='w-[97%] flex-row items-center mt-[30px] ml-[2%] pb-[20px] border-b-[2px]'>
                 <Text className='text-[19pt] font-bold'>Notificações</Text>
+                <Image style={{ height: 60, width: 60 }} source={require('@/assets/images/MinimalistTechCarFinal.png')} />
+
 
             </View>
 
@@ -23,7 +25,7 @@ export default function NotificationsPages() {
                     gap-[20px] 
                     max-[1200px]:flex
                     max-[1200px]:items-center
-                    
+                    mb-[30px]
 
                 ">
 

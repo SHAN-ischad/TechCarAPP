@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
@@ -8,13 +9,15 @@ import { GlobalInputs } from '../components/atoms/globalInputs';
 import { TechCar } from '../components/atoms/logoTechCar';
 import '../style/global.css';
 import { styled } from '../style/style';
+import { useCadastro } from './CadastroProvider';
 
 export default function Index() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
+    const { setCadastro } = useCadastro();
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (!email.trim()) {
             toast.error('O campo Email está vazio.', {
                 position: "top-right",
@@ -39,22 +42,40 @@ export default function Index() {
             });
             return;
         }
-        toast.success('Todos os campos estão preenchidos!', {
-            position: "top-right",
-            autoClose: 1500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-        setTimeout(() => {
-            router.replace('/Drawer/home');
-        }, 1500);
+        try {
+            const res = await axios.post('http://localhost:5000/api/auth/login', { email, senha: password });
+            const data = res.data as { usuario: { tipoConta: string; cpf: string;[key: string]: any } };
+            if (data.usuario.tipoConta === 'cliente' || data.usuario.tipoConta === 'proprietário') {
+                setCadastro({ ...data.usuario, tipoConta: data.usuario.tipoConta });
+            } else {
+                throw new Error('Tipo de conta desconhecido!');
+            }
+
+            toast.success('Login realizado!', {
+                position: "top-right",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            setTimeout(() => {
+                if (data.usuario.tipoConta === 'cliente') {
+                    router.replace('/Drawer/homeClient');
+                } else if (data.usuario.tipoConta === 'proprietário') {
+                    router.replace('/Drawer/home');
+                } else {
+                    toast.error('Tipo de conta desconhecido!');
+                }
+            }, 1500);
+        } catch (err: any) {
+            toast.error(err?.response?.data?.message || 'Email ou senha inválidos');
+        }
     };
 
     const casdasterPage = () => {
-        router.replace('./cadastro');
+        router.replace('/cadastro');
     };
 
     return (
@@ -138,7 +159,13 @@ export default function Index() {
                     </View>
                 </View>
             </View>
-            <ToastContainer />
+            <ToastContainer position="top-right"
+                autoClose={2000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                draggable />
         </>
     );
 }

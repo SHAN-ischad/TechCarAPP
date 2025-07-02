@@ -1,5 +1,5 @@
 import GlobalReturnButton from '@/src/components/atoms/globalReturnButton';
-import { ScrollView, Text, View } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 
 export default function CompletedServices() {
     const services = [
@@ -38,8 +38,10 @@ export default function CompletedServices() {
             <GlobalReturnButton route='OwnerPages/payments' />
 
             {/* Top Text */}
-            <View className='w-[97%] mt-[20px] ml-[2%] border-b-[2px] pb-[20px]'>
+            <View className='w-[97%] flex-row items-center mt-[20px] ml-[2%] border-b-[2px] pb-[20px]'>
                 <Text className='text-[19pt]'>Serviços Completos</Text>
+                <Image style={{ height: 60, width: 60 }} source={require('@/assets/images/MinimalistTechCarFinal.png')} />
+
             </View>
 
             {/* Table */}
