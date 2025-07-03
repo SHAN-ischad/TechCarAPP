@@ -113,6 +113,7 @@ export default function CarCadaster() {
 
                     <TextInput
                         className='min-w-[100%] pl-[10px] min-h-[45px]  rounded-[20px] placeholder:text-[12pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px]  '
+                        className='min-w-[220px] pl-[10px] min-h-[35px]  rounded-[10px] placeholder:text-[12pt] font-sourceSans3 border-[1px] duration-[300ms] focus:rounded-[5px]  '
                         placeholder='Quilometragem'
                         value={quilometragem}
                         onChangeText={setQuilometragem}
