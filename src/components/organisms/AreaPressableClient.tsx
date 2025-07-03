@@ -13,7 +13,7 @@ interface AreaPressableClientProps {
 export function AreaPressableClient({ value, workshopName, nameCar, openingDate, serviceProvided }: AreaPressableClientProps) {
     return (
         <>
-            <Pressable className='w-full min-[800px]:w-[600px] py-[8px] rounded-[8px] shadow-md flex-row items-center gap-[50px] hover:bg-gray-400 duration-[300ms] active:scale-[0.95] '>
+            <Pressable className='w-full min-[800px]:w-[600px] p-[8px] rounded-[8px]  flex-row items-center gap-[50px] bg-slate-300/20 border-[1px] hover:bg-gray-400 duration-[300ms] active:scale-[0.95] '>
                 {/* Left Content */}
                 <View className='flex-[60%] h-full flex-col '>
                     {/* Top Content (Image, nameClient and Name Car) */}

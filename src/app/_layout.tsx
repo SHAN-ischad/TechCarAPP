@@ -2,6 +2,7 @@ import { Stack } from 'expo-router';
 import { CadastroProvider } from './CadastroProvider';
 
 export default function Layout() {
+
     return (
         <CadastroProvider>
 

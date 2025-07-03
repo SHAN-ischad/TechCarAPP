@@ -1,3 +1,4 @@
+import { useCadastro } from '@/src/app/CadastroProvider';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { Image, Text, View } from 'react-native';
@@ -6,6 +7,8 @@ import { GlobalInputs } from '../../atoms/globalInputs';
 
 
 export function BodyHome() {
+    const { cadastro } = useCadastro();
+
     return (
         <View className='flex-1 gap-[20px] ' >
             {/* User */}
@@ -13,10 +16,15 @@ export function BodyHome() {
                 {/* tag User */}
                 <View
                     className='h-fit  items-center flex-row gap-[12px] w-fit pr-[20px] pb-[1.1px] '>
-                    <Image source={{ uri: 'https://github.com/SHAN-ischad.png' }} className='h-[70px] w-[70px] rounded-3xl max-sm:h-[60px] max-sm:w-[60px]' />
+                    <Image
+                        source={{ uri: cadastro?.ownerImage || 'https://github.com/SHAN-ischad.png' }}
+                        className='h-[70px] w-[70px] rounded-3xl max-sm:h-[60px] max-sm:w-[60px]'
+                    />
                     {/* Text User */}
                     <View className='h-full flex-col justify-center'>
-                        <Text className='font-semibold text-[13pt] max-sm:text-[10pt] ]'>Bem vindo de volta{'\n'}{ }Iago Viera</Text>
+                        <Text className='font-semibold text-[13pt] max-sm:text-[10pt]'>
+                            Bem vindo de volta{'\n'}{cadastro?.nome}
+                        </Text>
                     </View>
 
                 </View>

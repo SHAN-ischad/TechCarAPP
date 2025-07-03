@@ -11,7 +11,7 @@ export default function BottomHomeClient() {
             {/*Latest Services  */}
             <View className='mt-[15px] w-full items-center ' >
 
-                <View className=' flex-col gap-[20px]  max-sm:w-[100%]   '>
+                <View className='  grid grid-cols-2 max-[1300px]:grid-cols-1 gap-[10px]  max-sm:w-[100%]   '>
                     <AreaPressableClient value={90.50} nameCar='Lanborguini' openingDate='29/10/25' workshopName='Victor Fritz' serviceProvided='limpeza' image='aaa' />
 
                     <AreaPressableClient value={90.50} nameCar='Lanborguini' openingDate='29/10/25' workshopName='Victor Fritz' serviceProvided='limpeza' image='aaa' />

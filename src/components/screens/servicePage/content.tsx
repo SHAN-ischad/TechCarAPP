@@ -36,8 +36,7 @@ export function ContentPage() {
 
                     <Pressable
                         onPress={() => setModalVisible(true)}
-                        className="bg-slate-500/10 
-    w-[180px] min-h-[100px] rounded-lg p-5 items-center justify-center hover:bg-blue-200 gap-[2px] duration-300 flex-row">
+                        className="bg-slate-300/20 border-[1px] hover:rounded-[1px] w-[180px] min-h-[100px] rounded-lg p-5 items-center justify-center hover:bg-blue-200 gap-[2px] duration-300 flex-row">
                         < Text className="font-bold text-[12pt]" >
                             Criar
                         </Text >
@@ -138,7 +137,7 @@ export function ContentPage() {
                     </Modal >
                     <Pressable
                         onPress={() => router.push('/Drawer/OwnerPages/completedServices')}
-                        className="bg-slate-500/10 w-[180px] min-h-[100px] rounded-lg p-5 items-center justify-center hover:bg-blue-200 gap-[2px] duration-300 flex-row">
+                        className="bg-slate-300/20 border-[1px] hover:rounded-[1px] w-[180px] min-h-[100px] rounded-lg p-5 items-center justify-center hover:bg-blue-200 gap-[2px] duration-300 flex-row">
                         <Text className="font-bold text-[12pt]">
                             Ver todos
                         </Text>
@@ -151,7 +150,7 @@ export function ContentPage() {
                 <Text className='text-[20pt]'>Serviços Ativos</Text>
             </View >
             {/* Services Area */}
-            < View className='w-[99%] mb-[20px] ml-[1%] mt-[20px] min-h-[200px] max-h-fit grid grid-cols-3 max-[1300px]:flex max-[1300px]:flex-col max-[1300px]:items-center max-[1300px]:ml-[0%] gap-[20px] ' >
+            < View className='w-[99%] mb-[20px] ml-[1%] mt-[20px] min-h-[200px] max-h-fit grid grid-cols-3 max-[1300px]:flex max-[1300px]:flex-col max-[1300px]:items-center max-[1300px]:ml-[0%] gap-[20px] max-[1300px]:w-full  ' >
                 {/* Service */}
                 <ServiceCard />
                 <ServiceCard />

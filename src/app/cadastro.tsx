@@ -2,13 +2,12 @@ import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { ButtonEnv } from '../components/atoms/buttonEnv';
 import { GlobalInputs } from '../components/atoms/globalInputs';
 import { TechCar } from '../components/atoms/logoTechCar';
+import { checkEmailExists } from '../hooks/uniqueCheck';
 import { styled } from '../style/style';
 import { useCadastro } from './CadastroProvider';
-
 
 export default function Cadastro() {
     const { cadastro, setCadastro } = useCadastro()
@@ -22,10 +21,26 @@ export default function Cadastro() {
         return () => clearTimeout(timer);
     }, []);
 
-    const redirect = () => {
-        if (userName.trim() === '' || userEmail.trim() === '' || userPassword.trim() === '') {
-            toast.error('Preencha todos os campos para se cadastrar', {});
-        } else {
+    const redirect = async () => {
+        if (userName.length < 2) {
+            toast.error('número de caracteres em nome inválido', {});
+            return
+        }
+        if (userEmail.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)) {
+            toast.error('Email inválido', {})
+            return
+        }
+
+        if (await checkEmailExists(userEmail)) {
+            toast.error('Email já cadastrado')
+            return
+        }
+
+        if (userPassword.length < 6) {
+            toast.error('Senha deve ter no mínimo 6 caracteres', {});
+            return
+        }
+        else {
             toast.success('Redirecionando', {});
             setCadastro({
                 ...cadastro,
@@ -96,6 +111,7 @@ export default function Cadastro() {
                         <GlobalInputs
                             placeholder="Nome"
                             value={userName}
+                            onchangeText={() => setUserName}
                             backgroundColor="bg-white"
                             padding="10px"
                             borderRadius="10px"
@@ -108,6 +124,8 @@ export default function Cadastro() {
                         <GlobalInputs
                             placeholder="Email"
                             value={userEmail}
+                            onchangeText={() => setUserEmail}
+
                             backgroundColor="bg-white"
                             padding="10px"
                             borderRadius="10px"
@@ -120,6 +138,7 @@ export default function Cadastro() {
                         <GlobalInputs
                             placeholder="Senha"
                             value={userPassword}
+                            onchangeText={() => setUserPassword}
                             backgroundColor="bg-white"
                             padding="10px"
                             borderRadius="10px"

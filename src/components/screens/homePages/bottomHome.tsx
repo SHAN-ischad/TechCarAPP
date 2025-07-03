@@ -10,7 +10,7 @@ export function BottomHome() {
             <View className='mt-[15px] w-full items-center '
 
             >
-                <View className=' flex-col gap-[20px]  max-sm:w-[100%]   '>
+                <View className=' grid mx-auto grid-cols-2 max-[1200px]:grid-cols-1 gap-[10px]   '>
                     <GlobalAreaPressable nameCar='Lanborguini' openingDate='29/10/25' nameClient='Victor Fritz' serviceStage='limpeza' image='aaa' />
 
                     <GlobalAreaPressable nameCar='Lanborguini' openingDate='29/10/25' nameClient='Victor Fritz' serviceStage='limpeza' image='aaa' />

@@ -7,7 +7,7 @@ export default function ServiceCard() {
     const [isTrashHovered, setIsTrashHovered] = useState(false);
     return (
         <>
-            <View className='w-[420px] rounded-[10px] p-[10px] bg-slate-400/10  h-[270px] '>
+            <View className='w-[420px] rounded-[10px] p-[10px] bg-slate-300/20 border-[1px] max-[1300px]:w-full max-[1100px]:w-[650px] max-[900px]:w-full  max-h-[270px] min-h-fit max-[900px]:h-[]  '>
                 {/* Content */}
                 <View className='w-full flex-row  gap-[20px]'>
 
@@ -33,7 +33,7 @@ export default function ServiceCard() {
                 </View>
 
                 {/* Bottom Content(Action Buttons) */}
-                <View className='w-full justify-end flex-row gap-[10px]'>
+                <View className='w-full  justify-end flex-row gap-[10px]'>
                     <Pressable className='w-fit h-fit hover:[#446AF5] hover:bg-slate-500/10 rounded-[9px] p-[10px]'>
                         <Ionicons name='book' size={20} color={'#446AF5'} />
                     </Pressable>

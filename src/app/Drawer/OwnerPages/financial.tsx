@@ -2,7 +2,7 @@ import GlobalReturnButton from '@/src/components/atoms/globalReturnButton';
 import getMounth from '@/src/hooks/getMounth';
 import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
+import { Image, Modal, Pressable, ScrollView, Text, View } from 'react-native';
 
 export default function Financial() {
     const [openModal, setOpenModal] = useState<'gastos' | 'rendimento' | null>(null);
@@ -14,15 +14,20 @@ export default function Financial() {
 
             {/* Top Text */}
             <View className='w-[97%] mt-[30px] ml-[2%] pb-[20px] border-b-[2px]'>
-                <Text className='text-[19pt] font-bold'>Financeiro</Text>
+                <View className='flex-row w-fit items-center '>
+
+                    <Text className='text-[19pt] font-bold'>Financeiro</Text>
+                    <Image style={{ height: 60, width: 60 }} source={require('@/assets/images/MinimalistTechCarFinal.png')} />
+                </View>
+
                 <Text className='text-[12pt] font-semibold'>
                     Mês correspondente {getMounth()} <Ionicons name='calendar' size={25} className='top-[5px]' />
                 </Text>
             </View>
             {/* All Content */}
-            <View className='w-full mt-[4%] flex-row max-[870px]:flex-col items-center justify-center gap-[50px] '>
+            <View className='w-full mb-[30px] mt-[4%] flex-row max-[870px]:flex-col items-center justify-center gap-[50px] '>
                 {/*Left Content (expenses: parts, salaries and property) */}
-                <View className='w-[400px] min-h-[300px] max-[800px]:w-full flex-col gap-[20px] rounded-[10px]  bg-slate-500/20'>
+                <View className='w-[400px] min-h-[300px] max-[800px]:w-full flex-col gap-[20px] rounded-[10px]  bg-slate-300/20 border-[1px]'>
                     {/* Content Top Text */}
                     <View className='w-full mb-[10px] flex-row ml-[20px] gap-[30px] items-center mt-[10px]'>
                         <Text className='text-[17pt] font-bold'>Gastos </Text>
@@ -50,7 +55,7 @@ export default function Financial() {
                 </View>
 
                 {/* Right Content(perfomance:monthly,annual and totalServices) */}
-                <View className='w-[400px] min-h-[300px] max-[800px]:w-full flex-col gap-[20px] rounded-[10px]  bg-slate-500/20'>
+                <View className='w-[400px] min-h-[300px] max-[800px]:w-full flex-col gap-[20px] rounded-[10px]  bg-slate-300/20 border-[1px]'>
                     {/* Content Top Text */}
                     <View className='w-full mb-[10px] ml-[20px] gap-[30px] items-center flex-row mt-[10px]'>
                         <Text className='text-[17pt] font-bold'>Rendimento</Text>
