@@ -40,7 +40,7 @@ export default function Chat() {
                     className="w-fit px-[10px] top-[10px]">
                     <Ionicons name='caret-back' size={30} />
                 </Pressable>
-                <Text className='text-[20pt] font-sourceSans3 top-[10px]'>Menu de Chat</Text>
+                <Text className='text-[20pt] font-tintNeon top-[10px]'>Menu de Chat</Text>
             </View>
 
             {/* Contacts */}
@@ -58,7 +58,7 @@ export default function Chat() {
                         />
                         <View className="flex-1">
                             <View className="flex-row items-center justify-between">
-                                <Text className="text-[15pt] font-sourceSans3 font-bold">{contact.name}</Text>
+                                <Text className="text-[15pt] font-tintNeon  font-bold">{contact.name}</Text>
                                 <Text className="text-xs text-gray-400">{contact.time}</Text>
                             </View>
                             <View className="flex-row items-center justify-between mt-1">

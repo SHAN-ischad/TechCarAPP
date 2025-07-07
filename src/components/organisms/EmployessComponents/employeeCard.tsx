@@ -10,13 +10,13 @@ export function EmployeeCard() {
                 source={{ uri: 'https://github.com/SHAN-ischad.png' }} />
 
             {/* Name */}
-            <Text className='text-[15pt] font-semibold'>Vladimir</Text>
+            <Text className='text-[15pt] font-tintNeon font-semibold'>Vladimir</Text>
 
             {/* Functions */}
-            <Text className='text-[15pt] font-semibold'>Função: <Text className='text-[13pt]'>Borracheiro</Text></Text>
+            <Text className='text-[15pt] font-tintNeon font-semibold'>Função: <Text className='text-[13pt]'>Borracheiro</Text></Text>
 
             {/* Wage */}
-            <Text className='text-[15pt] font-semibold'>Salario: <Text className='text-[13pt] text-green-500'>1600.00R$</Text></Text>
+            <Text className='text-[15pt] font-tintNeon font-semibold'>Salario: <Text className='text-[13pt] text-green-500 font-tintNeon'>1600.00R$</Text></Text>
             {/* Bottom content */}
             <View className=' w-full items-start flex-row mt-[2px]  gap-[10px]'>
                 <Pressable className='h-fit w-fit  hover:shadow-md rounded-md p-[5px] duration-[300ms] '>

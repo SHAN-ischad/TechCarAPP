@@ -7,16 +7,16 @@ export default function ServiceCard() {
     const [isTrashHovered, setIsTrashHovered] = useState(false);
     return (
         <>
-            <View className='w-[420px] rounded-[10px] p-[10px] bg-slate-400/10  h-[270px] '>
+            <View className='w-[420px] rounded-[10px] p-[10px] bg-slate-300/20 border-[1px] max-[1300px]:w-full max-[1100px]:w-[650px] max-[900px]:w-full  max-h-[270px] min-h-fit max-[900px]:h-[]  '>
                 {/* Content */}
                 <View className='w-full flex-row  gap-[20px]'>
 
                     {/* Top content */}
                     <View className='w-full items-start pt-[10px] flex-[50%]'>
-                        <Text className='text-[13.8pt] font-semibold'>Cliente: Henrique</Text>
-                        <Text className='text-[13.8pt] font-semibold'>Carro: Fox</Text>
-                        <Text className='text-[13.8pt] font-semibold'>Status: <Text className=' text-[13.8pt]  h-fit w-fit bg-green-500 text-white rounded-lg p-[1.2px] '>Ativo</Text></Text>
-                        <Text className='text-[13.8pt] font-semibold'>Serviço: Revisão</Text>
+                        <Text className='text-[13.8pt] font-tintNeon font-semibold'>Cliente: Henrique</Text>
+                        <Text className='text-[13.8pt] font-tintNeon font-semibold'>Carro: Fox</Text>
+                        <Text className='text-[13.8pt] font-tintNeon font-semibold'>Status: <Text className=' text-[13.8pt]  h-fit w-fit bg-green-500 text-white rounded-lg p-[1.2px] '>Ativo</Text></Text>
+                        <Text className='text-[13.8pt] font-tintNeon font-semibold'>Serviço: Revisão</Text>
                     </View>
 
                     <View className='w-full items-center pt-[10px] flex-[50%]'>
@@ -26,14 +26,14 @@ export default function ServiceCard() {
 
                 {/* center Content(Description Service) */}
                 <View className='w-full mt-[10px] gap-[5px]'>
-                    <Text className='text-[13pt] font-bold'>Descrição do Serviço</Text>
+                    <Text className='text-[13pt] font-tintNeon font-bold'>Descrição do Serviço</Text>
                     <Text className='text-[11pt] font-semibold' numberOfLines={4}>
                         Revisão completa do veículo, incluindo troca de óleo, verificação de freios e suspensão, alinhamento e balanceamento, limpeza interna e externa.
                     </Text>
                 </View>
 
                 {/* Bottom Content(Action Buttons) */}
-                <View className='w-full justify-end flex-row gap-[10px]'>
+                <View className='w-full  justify-end flex-row gap-[10px]'>
                     <Pressable className='w-fit h-fit hover:[#446AF5] hover:bg-slate-500/10 rounded-[9px] p-[10px]'>
                         <Ionicons name='book' size={20} color={'#446AF5'} />
                     </Pressable>

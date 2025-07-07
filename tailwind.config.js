@@ -17,6 +17,8 @@ module.exports = {
             },
             fontFamily: {
                 sourceSans3: ['SourceSans3', 'sans-serif'],
+                robotoMono: ['RobotoMono', 'monospace'],
+                tintNeon: ['TintNeon', 'TiltNeon'],
             }
         },
     },

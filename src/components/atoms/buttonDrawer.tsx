@@ -1,7 +1,7 @@
-import { View, Text, Pressable } from 'react-native';
-import { DrawerToggleButton } from '@react-navigation/drawer';
+import { DrawerNavigationProp, DrawerToggleButton } from '@react-navigation/drawer';
 import { useNavigation } from '@react-navigation/native';
-import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { Pressable, Text, View } from 'react-native';
+
 
 type DrawerParamList = {
     Home: undefined;
@@ -20,7 +20,7 @@ export function ButtonDrawer() {
                 <View className=' items-center justify-center group-hover:mr-[40px] duration-300'>
                     <Text
                         className='text-[10pt] font-semibold left-[-100] opacity-0  group-hover:flex 
-                    group-hover:opacity-100 transition-all absolute group-hover:left-0 duration-[500ms]'
+                    group-hover:opacity-100 transition-all absolute group-hover:left-0 duration-[500ms] font-tintNeon'
                         selectable={false}
                     >
                         Navegar

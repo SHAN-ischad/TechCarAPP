@@ -19,13 +19,13 @@ export default function Employees() {
 
                 {/* employee Addition */}
                 <View className='w-[200px] mr-[10px] cursor-pointer h-[320px] flex-col bg-blue-500 group/Addition rounded-[10px] items-center  '>
-                    <Text className='text-[19pt] text-white mt-[60px] '>Adição de{'\n'}Funcionários</Text>
+                    <Text className='text-[19pt] font-tintNeon text-white mt-[60px] '>Adição de{'\n'}Funcionários</Text>
                     <Ionicons name='add-circle' size={90} color={'white'} className='group-hover/Addition:animate-pulse duration-[600ms]' />
                 </View>
                 {/* Full Content (Employees cards) */}
                 <View className=' w-full  justify-around items-center'>
                     {/*Employees Cards(Images, Name, function and more) */}
-                    {employees.length === 0 ? (<Text className='text-[15pt] font-bold'>Nenhum Funcionario cadastrado</Text>) : (employees.map((employees) => <EmployeeCard key={employees.id} />))}
+                    {employees.length === 0 ? (<Text className='text-[15pt] font-tintNeon font-bold'>Nenhum Funcionario cadastrado</Text>) : (employees.map((employees) => <EmployeeCard key={employees.id} />))}
                     {/* <EmployeeCard /> */}
                 </View>
             </View>

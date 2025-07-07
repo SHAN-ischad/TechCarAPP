@@ -42,7 +42,7 @@ export default function ChatMessage() {
                         style={{ width: 50, height: 50 }}
                         source={{ uri: 'https://github.com/SHAN-ischad.png' }} />
                     {/* Name */}
-                    <Text className='text-[15pt] font-sourceSans3'>
+                    <Text className='text-[15pt] font-tintNeon '>
                         Iago Vieira
                     </Text>
                 </View>
@@ -70,10 +70,10 @@ export default function ChatMessage() {
                                 borderBottomLeftRadius: msg.sender === 'me' ? 16 : 0,
                             }}
                         >
-                            <Text className={`text-[13pt] ${msg.sender === 'me' ? 'text-white' : 'text-gray-900'} font-sourceSans3`}>
+                            <Text className={`text-[13pt] ${msg.sender === 'me' ? 'text-white' : 'text-gray-900'} font-tintNeon`}>
                                 {msg.text}
                             </Text>
-                            <Text className={`text-[10pt] mt-1 ${msg.sender === 'me' ? 'text-blue-200' : 'text-gray-500'} text-right`}>
+                            <Text className={`text-[10pt] mt-1 ${msg.sender === 'me' ? 'text-blue-200' : 'text-gray-500'} text-right font-tintNeon`}>
                                 {msg.time}
                             </Text>
                         </View>

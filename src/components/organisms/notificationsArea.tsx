@@ -22,11 +22,11 @@ export function NotificationsArea() {
     return (
         <>
             <View className='min-w-[600px] max-w-fit bg-slate-500/20 max-[1200px]:min-w-full  rounded-[10px] p-[20px]' >
-                <Text className='text-[17pt] font-bold text-start'>
+                <Text className='text-[17pt] font-tintNeon font-bold text-start'>
                     {message.ownerName}
                 </Text>
-                <Text className='text-[12pt] '>{message.message}</Text>
-                <Text className='text-[11pt] text-end'>{message.date}</Text>
+                <Text className='text-[12pt] font-tintNeon '>{message.message}</Text>
+                <Text className='text-[11pt] font-tintNeon text-end'>{message.date}</Text>
             </View>
         </>
     );

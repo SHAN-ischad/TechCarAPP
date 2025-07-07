@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
@@ -8,13 +9,15 @@ import { GlobalInputs } from '../components/atoms/globalInputs';
 import { TechCar } from '../components/atoms/logoTechCar';
 import '../style/global.css';
 import { styled } from '../style/style';
+import { useCadastro } from './CadastroProvider';
 
 export default function Index() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
-
-    const handleSubmit = () => {
+    const { setCadastro } = useCadastro();
+    const [showPassword, setShowPassword] = useState(false)
+    const handleSubmit = async () => {
         if (!email.trim()) {
             toast.error('O campo Email está vazio.', {
                 position: "top-right",
@@ -39,23 +42,73 @@ export default function Index() {
             });
             return;
         }
-        toast.success('Todos os campos estão preenchidos!', {
-            position: "top-right",
-            autoClose: 1500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-        setTimeout(() => {
-            router.replace('/Drawer/home');
-        }, 1500);
+        try {
+            const res = await axios.post('http://localhost:5000/api/auth/login', { email, senha: password });
+            const data = res.data as { usuario: { tipoConta: string; cpf: string;[key: string]: any } };
+            if (data.usuario.tipoConta === 'cliente' || data.usuario.tipoConta === 'proprietário') {
+                setCadastro({
+                    nome: data.usuario.nome ?? '',
+                    email: data.usuario.email ?? '',
+                    senha: '', // nunca retorne a senha do back-end, deixe vazia
+                    tipoConta: data.usuario.tipoConta as "cliente" | "proprietário",
+                    cpf: data.usuario.cpf ?? '',
+                    dataNascimento: data.usuario.dataNascimento ?? '',
+                    idade: data.usuario.idade ?? '',
+                    estado: data.usuario.estado ?? '',
+                    telefone: data.usuario.telefone ?? '',
+                    modelo: data.usuario.modelo ?? '',
+                    marca: data.usuario.marca ?? '',
+                    anoFabricacao: data.usuario.anoFabricacao ?? '',
+                    cor: data.usuario.cor ?? '',
+                    categoria: data.usuario.categoria ?? '',
+                    quilometragem: data.usuario.quilometragem ?? '',
+                    placa: data.usuario.placa ?? '',
+                    nomeOficina: data.usuario.nomeOficina ?? '',
+                    cnpj: data.usuario.cnpj ?? '',
+                    endereco: data.usuario.endereco ?? '',
+                    cidade: data.usuario.cidade ?? '',
+                    horarioFuncionamento: data.usuario.horarioFuncionamento ?? '',
+                    descricao: data.usuario.descricao ?? '',
+                    cidadeOficina: data.usuario.cidadeOficina ?? '',
+                    descricaoOficina: data.usuario.descricaoOficina ?? '',
+                    clientImage: data.usuario.clientImage ?? '',
+                    carImage: data.usuario.carImage ?? '',
+                    ownerImage: data.usuario.ownerImage ?? '',
+                    proprietyImage: data.usuario.proprietyImage ?? '',
+                    carro: data.usuario ?? ''
+                });
+            } else {
+                throw new Error('Tipo de conta desconhecido!');
+            }
+
+            toast.success('Login realizado!', {
+                position: "top-right",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            setTimeout(() => {
+                if (data.usuario.tipoConta === 'cliente') {
+                    router.replace('/Drawer/homeClient');
+                } else if (data.usuario.tipoConta === 'proprietário') {
+                    const idVeiculo = data.usuario.carroId || data.usuario._idCarro; // ajuste para o campo correto
+                    router.replace({ pathname: '/Drawer/vehicle', params: { id: idVeiculo } });
+                } else {
+                    toast.error('Tipo de conta desconhecido!');
+                }
+            }, 1500);
+        } catch (err: any) {
+            toast.error(err?.response?.data?.message || 'Email ou senha inválidos');
+        }
     };
 
     const casdasterPage = () => {
-        router.replace('./cadastro');
+        router.replace('/cadastro');
     };
+
 
     return (
         <>
@@ -83,8 +136,10 @@ export default function Index() {
 
                     {/* Inputs com ícones Ionicons e estilização personalizada */}
                     <View className="w-full gap-[20px] mt-4">
-                        <View className="flex-row-reverse  items-center ">
-                            <Ionicons name="mail-outline" size={22} color="black" className="right-[30px]" />
+                        <View className="flex-row-reverse relative  items-center ">
+                            <Pressable className='absolute right-[-20px] cursor-default'>
+                                <Ionicons name="mail-outline" size={22} color="black" className="right-[30px]" />
+                            </Pressable>
                             <GlobalInputs
                                 placeholder="Email"
                                 value={email}
@@ -95,11 +150,15 @@ export default function Index() {
                                 marginLeft=""
                                 marginRight=""
                                 marginBottom=""
-                                setAtribute={(e) => setEmail(e.nativeEvent.text)}
-                            />
+                                setAtribute={(e) => setEmail(e.nativeEvent.text)} secureTextEntry={false} />
                         </View>
-                        <View className="flex-row-reverse  items-center ">
-                            <Ionicons name="lock-closed-outline" size={22} color="black" className="right-[30px]" />
+                        <View className="flex-row-reverse relative items-center ">
+                            <Pressable
+                                onPress={() => setShowPassword((prev) => !prev)}
+                                className='absolute w-fit right-[10px] items-center justify-center'
+                            >
+                                <Ionicons name={!showPassword ? "eye-off" : "eye"} size={22} color="black" />
+                            </Pressable>
                             <GlobalInputs
                                 placeholder="Senha"
                                 value={password}
@@ -111,7 +170,8 @@ export default function Index() {
                                 marginRight=""
                                 marginBottom=""
                                 setAtribute={(e) => setPassword(e.nativeEvent.text)}
-                            />
+                                secureTextEntry={!showPassword} />
+
                         </View>
                     </View>
 
@@ -131,14 +191,20 @@ export default function Index() {
                             Não tem conta?
                         </Text>
                         <Pressable onPress={casdasterPage}>
-                            <Text className="text-[11pt] font-bold text-blue-600 hover:text-red-950 duration-400">
+                            <Text className="text-[11pt] font-bold text-blue-600 hover:text-black duration-400">
                                 Faça Seu cadastro
                             </Text>
                         </Pressable>
                     </View>
                 </View>
-            </View>
-            <ToastContainer />
+            </View >
+            <ToastContainer position="top-right"
+                autoClose={2000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                draggable />
         </>
     );
 }

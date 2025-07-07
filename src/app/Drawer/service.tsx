@@ -18,10 +18,8 @@ export default function Service() {
     } else {
         return (
             <ScrollView className='flex-1 bg-white overflow-auto  ' >
-                <View className=''>
-                    <GlobalHeader />
-                </View>
 
+                <GlobalHeader />
 
                 <ContentPage />
 
