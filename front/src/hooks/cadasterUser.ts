@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { API_URL } from './apiUrl';
+
 
 export interface UserData {
     carro: any;
@@ -77,7 +79,7 @@ export function useCadasterUser() {
         }
 
         try {
-            const endpoint = 'http://localhost:5000/api/usuarios';
+            const endpoint = `${API_URL}/api/usuarios`;
             const response = await axios.post<UsuarioResponse>(endpoint, userData);
             setSuccess(true);
             return response;

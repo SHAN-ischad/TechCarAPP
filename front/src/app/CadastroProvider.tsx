@@ -36,7 +36,8 @@ const initialCadastro: UserData = {
     clientImage: '',
     carImage: '',
     ownerImage: '',
-    proprietyImage: ''
+    proprietyImage: '',
+    carro: undefined
 };
 
 export function CadastroProvider({ children }: { children: ReactNode }) {

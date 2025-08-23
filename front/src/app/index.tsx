@@ -7,9 +7,11 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GlobalInputs } from '../components/atoms/globalInputs';
 import { TechCar } from '../components/atoms/logoTechCar';
+import { API_URL } from '../hooks/apiUrl';
 import '../style/global.css';
 import { styled } from '../style/style';
 import { useCadastro } from './CadastroProvider';
+
 
 export default function Index() {
     const [email, setEmail] = useState('');
@@ -43,7 +45,7 @@ export default function Index() {
             return;
         }
         try {
-            const res = await axios.post('http://localhost:5000/api/auth/login', { email, senha: password });
+            const res = await axios.post(`${API_URL}/api/auth/login`, { email, senha: password });
             const data = res.data as { usuario: { tipoConta: string; cpf: string;[key: string]: any } };
             if (data.usuario.tipoConta === 'cliente' || data.usuario.tipoConta === 'proprietário') {
                 setCadastro({
