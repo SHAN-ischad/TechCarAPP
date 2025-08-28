@@ -2,9 +2,19 @@
 require('dotenv').config();
 
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
+const app = express();
 
+app.use(cors({
+  origin: ['https://techcarapp-1.onrender.com', 'http://localhost:8081'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
+app.use(express.json({ limit: '20mb' }));
+app.use(express.urlencoded({ limit: '20mb', extended: true }));
+
+// Rotas
 const exemploRoutes = require('./routes/exemploRoutes');
 const oficinaRoutes = require('./routes/oficinaRoutes');
 const clienteRoutes = require('./routes/clientesRoutes');
@@ -16,20 +26,6 @@ const chatRoutes = require('./routes/chatRoutes');
 const notificacaoRoutes = require('./routes/notificacaoRoutes');
 const usuariosRoutes = require('./routes/usuarioRoutes')
 const authRoutes = require('./routes/authRoutes');
-const app = express();
-
-// Configura o CORS para aceitar requisições de qualquer origem
-app.use(cors({
-  origin: ['https://techcarapp-1.onrender.com', 'http://localhost:8081'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-}));
-
-// Middleware para interpretar JSON e aumentar o limite do payload
-app.use(express.json({ limit: '20mb' }));
-app.use(express.urlencoded({ limit: '20mb', extended: true }));
-
-// Rotas
 app.use('/api/exemplo', exemploRoutes);
 app.use('/api/oficinas', oficinaRoutes);
 app.use('/api/clientes', clienteRoutes);
@@ -43,6 +39,7 @@ app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/auth', authRoutes);
 
 // Conexão com o MongoDB
+const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE_URL)
   .then(() => console.log('Conectado ao MongoDB'))
   .catch((err) => console.error('Erro ao conectar ao MongoDB:', err));
