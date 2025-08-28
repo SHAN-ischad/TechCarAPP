@@ -19,7 +19,11 @@ const authRoutes = require('./routes/authRoutes');
 const app = express();
 
 // Configura o CORS para aceitar requisições de qualquer origem
-app.use(cors());
+app.use(cors({
+  origin: ['https://techcarapp-1.onrender.com', 'http://localhost:8081'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 
 // Middleware para interpretar JSON e aumentar o limite do payload
 app.use(express.json({ limit: '20mb' }));
