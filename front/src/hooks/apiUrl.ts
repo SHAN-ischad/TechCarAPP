@@ -1,1 +1,1 @@
-export const API_URL = 'https://techcarapp.onrender.com/'
+export const API_URL = 'https://techcarapp.onrender.com'

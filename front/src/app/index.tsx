@@ -97,7 +97,7 @@ export default function Index() {
                     router.replace('/Drawer/homeClient');
                 } else if (data.usuario.tipoConta === 'proprietário') {
                     const idVeiculo = data.usuario.carroId || data.usuario._idCarro; // ajuste para o campo correto
-                    router.replace({ pathname: '/Drawer/vehicle', params: { id: idVeiculo } });
+                    router.replace({ pathname: '/Drawer/home', params: { id: idVeiculo } });
                 } else {
                     toast.error('Tipo de conta desconhecido!');
                 }
