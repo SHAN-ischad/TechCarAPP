@@ -11,7 +11,7 @@ export function ToScheduleCard() {
                 <View className='flex-row gap-[20px] items-center'>
                     <Image height={60} width={60} source={require('@/assets/images/react-logo.png')} />
                     <View className='flex-col gap-[10px] '>
-                        <Text className='text-[13.5pt] font-tintNeon'>Oficina: Simas Turbo</Text>
+                        <Text className='text-[13.5pt] font-tintNeon'>Oficina: Tuned Hub</Text>
                         <Text className='text-[13.5pt] font-tintNeon'>No Mês: 60 Serviços</Text>
                         <Text className='text-[13.5pt] font-tintNeon'>
                             Avaliação: <Text className='text-green-400'>3.5</Text>
